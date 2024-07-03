@@ -1,12 +1,12 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
 
-from app import db
-from app.models import Apartment, Rent
+from .repository import *
 
 service = Blueprint('service', __name__)
 
 
+# TODO add loggers
 @service.route('/')
 @login_required
 def profile():
@@ -20,26 +20,21 @@ def create_apartment():
     description = request.form.get('description')
     price = request.form.get('price')
     new_apartment = Apartment(name=name, description=description, price=price, user_id=current_user.id)
-    print(new_apartment)
     try:
-        db.session.add(new_apartment)
-        db.session.commit()
+        add_apartment(new_apartment)
         flash('Квартира успешно добавлена.')
-        print('Квартира успешно добавлена.')
     except Exception as e:
-        db.session.rollback()
+        rollback_db()
         flash(f'Ошибка при создании квартиры: {e}')
-        print(f'Квартира не была добавлена: {e}')
     return redirect(url_for('service.profile'))
 
 
 @service.route('/apartment/<int:apartment_id>', methods=['DELETE', 'GET'])
 @login_required
 def apartment(apartment_id):
-    now_apartment = db.session.query(Apartment).filter_by(id=apartment_id).first()
+    now_apartment = find_apartment_by_id(apartment_id)
     if request.method == 'DELETE':
-        db.session.delete(now_apartment)
-        db.session.commit()
+        delete_apartment(now_apartment)
         return redirect(url_for('service.profile'))
     return render_template('apartment.html', apartment=now_apartment, rents=now_apartment.rents)
 
@@ -56,24 +51,17 @@ def create_rent(apartment_id):
         expenses=request.form.get('expenses'),
         tax=request.form.get('tax')
     )
-    print(new_rent)
     try:
-        db.session.add(new_rent)
-        db.session.commit()
+        add_rent(new_rent)
         flash('Рента успешно добавлена.')
-        print('Рента успешно добавлена.')
     except Exception as e:
-        db.session.rollback()
+        rollback_db()
         flash(f'Ошибка при создании ренты: {e}')
-        print(f'Рента не была добавлена: {e}')
     return redirect(url_for('service.apartment', apartment_id=apartment_id))
 
 
 @service.route('/apartment/<int:apartment_id>/rent/<int:rent_id>', methods=['DELETE'])
 @login_required
-def delete_rent(apartment_id, rent_id):
-    db.session.query(Rent).filter_by(id=rent_id).delete()
-    db.session.commit()
+def rent(apartment_id, rent_id):
+    delete_rent(rent_id)
     return redirect(url_for('service.profile.apartment.apartment_id'))
-
-

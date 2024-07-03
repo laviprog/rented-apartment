@@ -1,0 +1,49 @@
+{% extends 'base_profile.html' %}
+{% block title %}{{ apartment.name }}{% endblock %}
+{% block main %}
+    <h1>Ваши ренты:</h1>
+    <div class="d-flex flex-wrap">
+        {% for rent in rents %}
+            <div class="flex-item col-md-4">
+                <div class="card" style="margin: 10px">
+                    <div class="card-body">
+                        <p class="card-title">{{ rent.date_start }} - {{ rent.date_end }}</p>
+                        <p class="card-text">Цена: {{ rent.price }}</p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            У вас пока что нет рент
+        {% endfor %}
+    </div>
+
+    <h1>Добавить ренту</h1>
+    <form method="POST" action="{{ url_for('service.create_rent', apartment_id=apartment.id) }}">
+        <div class="mb-3">
+            <label for="exampleStart" class="form-label">Начало сдачи</label>
+            <input type="date" class="form-control" id="exampleStart"
+                   name="date_start">
+        </div>
+        <div class="mb-3">
+            <label for="exampleEnd" class="form-label">Конец сдачи</label>
+            <input type="date" class="form-control" id="exampleEnd"
+                   name="date_end">
+        </div>
+        <div class="mb-3">
+            <label for="examplePrice" class="form-label">Стоимость суток</label>
+            <input type="number" class="form-control" id="examplePrice"
+                   name="price">
+        </div>
+        <div class="mb-3">
+            <label for="examplePrice" class="form-label">Расходы на сдачу</label>
+            <input type="number" class="form-control" id="examplePrice"
+                   name="expenses">
+        </div>
+        <div class="mb-3">
+            <label for="examplePrice" class="form-label">Налог</label>
+            <input type="number" class="form-control" id="examplePrice"
+                   name="tax">
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+{% endblock %}

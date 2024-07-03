@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title %}Главная{% endblock %}
+{% block body %}
+    {# TODO create other pages and insert links to them #}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">RentTracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Особенности</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Цены</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Контакты</a>
+                    </li>
+                </ul>
+                <a href="{{ url_for('auth.login') }}" class="btn btn-outline-success ms-3">Войти</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1>Добро пожаловать в RentTracker</h1>
+            <p class="lead">Ваш лучший помощник в управлении финансовыми потоками сдачи квартир</p>
+            <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg">Начать бесплатно</a>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Простое управление доходами</h5>
+                            <p class="card-text">Отслеживайте все ваши доходы от сдачи квартир в одном месте.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Анализ расходов</h5>
+                            <p class="card-text">Легко следите за всеми расходами и оптимизируйте свои финансовые
+                                потоки.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Автоматические отчеты</h5>
+                            <p class="card-text">Генерируйте подробные отчеты о ваших доходах и расходах
+                                автоматически.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 text-center">
+                    <h2>Подпишитесь на нашу рассылку</h2>
+                    <p class="lead">Получайте последние обновления и советы по управлению недвижимостью</p>
+                    {# TODO create subscribe to the newsletter #}
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="Введите ваш email">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Подписаться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 RentTracker. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

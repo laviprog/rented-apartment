@@ -1,0 +1,39 @@
+{% extends 'base_profile.html' %}
+
+{% block title %}{{ user.username }}{% endblock %}
+{% block main %}
+    <h1>Ваши квартиры:</h1>
+    <div class="d-flex flex-wrap">
+        {% for apartment in apartments %}
+            <div class="flex-item col-md-4">
+                <div class="card" style="margin: 10px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ apartment.name }}</h5>
+                        <p class="card-text">{{ apartment.description }}</p>
+                        <p class="card-text">Цена: {{ apartment.price }}</p>
+                        <a href="{{ url_for('service.apartment', apartment_id=apartment.id) }}" class="btn btn-primary">Подробная информация</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <h1>Добавить квартиру</h1>
+    <form method="POST" action="{{ url_for('service.create_apartment') }}">
+        <div class="mb-3">
+            <label for="exampleName" class="form-label">Название</label>
+            <input type="text" class="form-control" id="exampleName"
+                   name="name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleDescription" class="form-label">Описание</label>
+            <input type="text" class="form-control" id="exampleDescription"
+                   name="description">
+        </div>
+        <div class="mb-3">
+            <label for="examplePrice" class="form-label">Рыночная стоимость</label>
+            <input type="number" class="form-control" id="examplePrice"
+                   name="price">
+        </div>
+        <button type="submit" class="btn btn-primary">Создать</button>
+    </form>
+{% endblock %}

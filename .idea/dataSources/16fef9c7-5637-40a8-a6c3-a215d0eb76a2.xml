@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.51">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>1511</IntrospectionStateNumber>
-      <ServerVersion>15.6</ServerVersion>
-      <StartupTime>1719818608</StartupTime>
+      <IntrospectionStateNumber>1554</IntrospectionStateNumber>
+      <ServerVersion>15.7</ServerVersion>
+      <StartupTime>1720267044</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -800,29 +800,29 @@ false Zulu
 13471||10|C|G
 13471||-9223372036854775808|U|G
 13471||10|U|G</Grants>
-      <IntrospectionStateNumber>1511</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1554</IntrospectionStateNumber>
       <ObjectId>17556</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
-    <database id="3" parent="1" name="demo">
-      <ObjectId>16496</ObjectId>
+    <database id="3" parent="1" name="postgres">
+      <Comment>default administrative connection database</Comment>
+      <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
     <database id="4" parent="1" name="laviprog">
       <ObjectId>16385</ObjectId>
       <OwnerName>laviprog</OwnerName>
     </database>
-    <database id="5" parent="1" name="pastebin_db">
-      <ObjectId>17105</ObjectId>
-      <OwnerName>postgres</OwnerName>
-    </database>
-    <database id="6" parent="1" name="postgres">
-      <Comment>default administrative connection database</Comment>
-      <ObjectId>5</ObjectId>
-      <OwnerName>postgres</OwnerName>
-    </database>
-    <database id="7" parent="1" name="users_db_for_personal_finance_tracker">
+    <database id="5" parent="1" name="users_db_for_personal_finance_tracker">
       <ObjectId>16401</ObjectId>
+      <OwnerName>postgres</OwnerName>
+    </database>
+    <database id="6" parent="1" name="demo">
+      <ObjectId>16496</ObjectId>
+      <OwnerName>postgres</OwnerName>
+    </database>
+    <database id="7" parent="1" name="pastebin_db">
+      <ObjectId>17105</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
     <role id="8" parent="1" name="laviprog">
@@ -4241,65 +4241,65 @@ false Zulu
     <schema id="267" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>1511</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-07-03.06:49:54</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>1554</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-07-06.19:37:37</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>517</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
     <sequence id="268" parent="267" name="apartments_id_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>17624</ObjectId>
+      <ObjectId>25756</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="269" parent="267" name="expenses_id_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>17655</ObjectId>
+      <ObjectId>25787</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="270" parent="267" name="rents_id_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>17638</ObjectId>
+      <ObjectId>25770</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="271" parent="267" name="users_id_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>17613</ObjectId>
+      <ObjectId>25747</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <table id="272" parent="267" name="apartments">
-      <ObjectId>17625</ObjectId>
-      <StateNumber>1498</StateNumber>
+      <ObjectId>25757</ObjectId>
+      <StateNumber>1553</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="273" parent="267" name="expenses">
-      <ObjectId>17656</ObjectId>
-      <StateNumber>1498</StateNumber>
+      <ObjectId>25788</ObjectId>
+      <StateNumber>1553</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="274" parent="267" name="rents">
-      <ObjectId>17639</ObjectId>
-      <StateNumber>1498</StateNumber>
+      <ObjectId>25771</ObjectId>
+      <StateNumber>1553</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="275" parent="267" name="users">
-      <ObjectId>17614</ObjectId>
-      <StateNumber>1498</StateNumber>
+      <ObjectId>25748</ObjectId>
+      <StateNumber>1553</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -4308,299 +4308,275 @@ false Zulu
       <DefaultExpression>nextval(&apos;apartments_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1498</StateNumber>
-      <SequenceId>17624</SequenceId>
+      <StateNumber>1553</StateNumber>
+      <SequenceId>25756</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="277" parent="272" name="name">
       <DasType>varchar(80)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="278" parent="272" name="description">
       <DasType>varchar(1000)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="279" parent="272" name="price">
       <DasType>double precision|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>701</TypeId>
     </column>
     <column id="280" parent="272" name="user_id">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <foreign-key id="281" parent="272" name="apartments_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17633</ObjectId>
-      <StateNumber>1498</StateNumber>
+      <ObjectId>25765</ObjectId>
+      <StateNumber>1553</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>17614</RefTableId>
+      <RefTableId>25748</RefTableId>
     </foreign-key>
     <index id="282" parent="272" name="apartments_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17631</ObjectId>
+      <ObjectId>25763</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="283" parent="272" name="apartments_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17632</ObjectId>
+      <ObjectId>25764</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1498</StateNumber>
-      <UnderlyingIndexId>17631</UnderlyingIndexId>
+      <StateNumber>1553</StateNumber>
+      <UnderlyingIndexId>25763</UnderlyingIndexId>
     </key>
     <column id="284" parent="273" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;expenses_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1498</StateNumber>
-      <SequenceId>17655</SequenceId>
+      <StateNumber>1553</StateNumber>
+      <SequenceId>25787</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="285" parent="273" name="date">
       <DasType>timestamp|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="286" parent="273" name="name">
       <DasType>varchar(80)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="287" parent="273" name="description">
       <DasType>varchar(1000)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="288" parent="273" name="value">
       <DasType>double precision|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="289" parent="273" name="apartment_id">
-      <DasType>integer|0s</DasType>
+    <column id="289" parent="273" name="expense_type">
+      <DasType>varchar(20)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="290" parent="273" name="apartment_id">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>1553</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="290" parent="273" name="expenses_apartment_id_fkey">
+    <foreign-key id="291" parent="273" name="expenses_apartment_id_fkey">
       <ColNames>apartment_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17664</ObjectId>
-      <StateNumber>1498</StateNumber>
+      <ObjectId>25796</ObjectId>
+      <StateNumber>1553</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>17625</RefTableId>
+      <RefTableId>25757</RefTableId>
     </foreign-key>
-    <index id="291" parent="273" name="expenses_pkey">
+    <index id="292" parent="273" name="expenses_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17662</ObjectId>
+      <ObjectId>25794</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="292" parent="273" name="expenses_pkey">
+    <key id="293" parent="273" name="expenses_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17663</ObjectId>
+      <ObjectId>25795</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1498</StateNumber>
-      <UnderlyingIndexId>17662</UnderlyingIndexId>
+      <StateNumber>1553</StateNumber>
+      <UnderlyingIndexId>25794</UnderlyingIndexId>
     </key>
-    <column id="293" parent="274" name="id">
+    <column id="294" parent="274" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;rents_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1498</StateNumber>
-      <SequenceId>17638</SequenceId>
+      <StateNumber>1553</StateNumber>
+      <SequenceId>25770</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="294" parent="274" name="date_start">
+    <column id="295" parent="274" name="date_start">
       <DasType>timestamp|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="295" parent="274" name="date_end">
+    <column id="296" parent="274" name="date_end">
       <DasType>timestamp|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="296" parent="274" name="price">
+    <column id="297" parent="274" name="price">
       <DasType>double precision|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="297" parent="274" name="expenses">
-      <DasType>double precision|0s</DasType>
+    <column id="298" parent="274" name="user_id">
+      <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>1498</StateNumber>
-      <TypeId>701</TypeId>
+      <StateNumber>1553</StateNumber>
+      <TypeId>23</TypeId>
     </column>
-    <column id="298" parent="274" name="tax">
-      <DasType>double precision|0s</DasType>
+    <column id="299" parent="274" name="apartment_id">
+      <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
-      <StateNumber>1498</StateNumber>
-      <TypeId>701</TypeId>
-    </column>
-    <column id="299" parent="274" name="user_id">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>7</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="300" parent="274" name="apartment_id">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>8</Position>
-      <StateNumber>1498</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <foreign-key id="301" parent="274" name="rents_user_id_fkey">
+    <foreign-key id="300" parent="274" name="rents_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17645</ObjectId>
-      <StateNumber>1498</StateNumber>
+      <ObjectId>25777</ObjectId>
+      <StateNumber>1553</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>17614</RefTableId>
+      <RefTableId>25748</RefTableId>
     </foreign-key>
-    <foreign-key id="302" parent="274" name="rents_apartment_id_fkey">
+    <foreign-key id="301" parent="274" name="rents_apartment_id_fkey">
       <ColNames>apartment_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17650</ObjectId>
-      <StateNumber>1498</StateNumber>
+      <ObjectId>25782</ObjectId>
+      <StateNumber>1553</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>17625</RefTableId>
+      <RefTableId>25757</RefTableId>
     </foreign-key>
-    <index id="303" parent="274" name="rents_pkey">
+    <index id="302" parent="274" name="rents_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17643</ObjectId>
+      <ObjectId>25775</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="304" parent="274" name="rents_pkey">
+    <key id="303" parent="274" name="rents_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17644</ObjectId>
+      <ObjectId>25776</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1498</StateNumber>
-      <UnderlyingIndexId>17643</UnderlyingIndexId>
+      <StateNumber>1553</StateNumber>
+      <UnderlyingIndexId>25775</UnderlyingIndexId>
     </key>
-    <column id="305" parent="275" name="id">
+    <column id="304" parent="275" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>1498</StateNumber>
-      <SequenceId>17613</SequenceId>
+      <StateNumber>1553</StateNumber>
+      <SequenceId>25747</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="306" parent="275" name="username">
+    <column id="305" parent="275" name="username">
       <DasType>varchar(80)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="307" parent="275" name="email">
+    <column id="306" parent="275" name="email">
       <DasType>varchar(120)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="308" parent="275" name="password">
+    <column id="307" parent="275" name="password">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="309" parent="275" name="users_pkey">
+    <index id="308" parent="275" name="users_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17618</ObjectId>
+      <ObjectId>25752</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1498</StateNumber>
+      <StateNumber>1553</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="310" parent="275" name="users_username_key">
-      <ColNames>username</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17620</ObjectId>
-      <StateNumber>1498</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-      <CollationNames>default</CollationNames>
-      <CollationIds>100</CollationIds>
-      <CollationParentNames>pg_catalog</CollationParentNames>
-    </index>
-    <index id="311" parent="275" name="users_email_key">
+    <index id="309" parent="275" name="users_email_key">
       <ColNames>email</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17622</ObjectId>
-      <StateNumber>1498</StateNumber>
+      <ObjectId>25754</ObjectId>
+      <StateNumber>1553</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="312" parent="275" name="users_pkey">
+    <key id="310" parent="275" name="users_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17619</ObjectId>
+      <ObjectId>25753</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>1498</StateNumber>
-      <UnderlyingIndexId>17618</UnderlyingIndexId>
+      <StateNumber>1553</StateNumber>
+      <UnderlyingIndexId>25752</UnderlyingIndexId>
     </key>
-    <key id="313" parent="275" name="users_username_key">
+    <key id="311" parent="275" name="users_email_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17621</ObjectId>
-      <StateNumber>1498</StateNumber>
-      <UnderlyingIndexId>17620</UnderlyingIndexId>
-    </key>
-    <key id="314" parent="275" name="users_email_key">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>17623</ObjectId>
-      <StateNumber>1498</StateNumber>
-      <UnderlyingIndexId>17622</UnderlyingIndexId>
+      <ObjectId>25755</ObjectId>
+      <StateNumber>1553</StateNumber>
+      <UnderlyingIndexId>25754</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>

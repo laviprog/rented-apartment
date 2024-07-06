@@ -1,5 +1,11 @@
 body {
     height: 100%;
+    background: #efefef;
+}
+
+main{
+    background: white;
+    height: 100vh;
 }
 
 .center-container {
@@ -9,6 +15,11 @@ body {
     height: 100%;
 }
 
-.comeback{
+.comeback {
     margin: 15px;
 }
+
+.content {
+    display: none;
+}
+

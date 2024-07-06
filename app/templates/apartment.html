@@ -1,49 +1,217 @@
 {% extends 'base_profile.html' %}
 {% block title %}{{ apartment.name }}{% endblock %}
+
+
+{% block left_nav %}
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="btn btn-primary" href="{{ url_for('service.profile') }}">
+                К списку квартир
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" onclick="showContent('getInfo')">
+                Информация о квартире
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" onclick="showContent('getRents')">
+                Посмотреть ренты
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" onclick="showContent('getExpenses')">
+                Посмотреть расходы
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" onclick="showContent('addRent')">
+                Добавить ренту
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" onclick="showContent('addExpenses')">
+                Добавить расход
+            </a>
+        </li>
+        <li class="nav-item">
+            <form method="POST" action="{{ url_for('service.apartment', apartment_id=apartment.id) }}">
+                <button type="submit" class="btn btn-danger">Удалить квартиру</button>
+            </form>
+        </li>
+    </ul>
+{% endblock %}
+
 {% block main %}
-    <h1>Ваши ренты:</h1>
-    <div class="d-flex flex-wrap">
-        {% for rent in rents %}
-            <div class="flex-item col-md-4">
-                <div class="card" style="margin: 10px">
-                    <div class="card-body">
-                        <p class="card-title">{{ rent.date_start }} - {{ rent.date_end }}</p>
-                        <p class="card-text">Цена: {{ rent.price }}</p>
+    <div id="getInfo" class="content mt-3" style="display: block">
+        ТУт будет скоро инфа
+    </div>
+    <div id="getRents" class="content mt-3">
+        <h1>Ваши ренты:</h1>
+        <div class="d-flex flex-wrap">
+            {% for rent in rents %}
+                <div class="flex-item col-md-4">
+                    <div class="card" style="margin: 10px">
+                        <div class="card-body">
+                            <p class="card-title">{{ rent.get_date() }}</p>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                Подробнее
+                            </button>
+
+                            <!-- Модальное окно -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{ rent.get_date() }}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="card-text">Цена: {{ rent.price }}</p>
+                                            <p class="card-text">Выручка: {{ rent.get_revenue() }}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form method="POST"
+                                                  action="{{ url_for('service.delete_rent', apartment_id=apartment.id, rent_id=rent.id) }}">
+                                                <button type="submit" class="btn btn-danger">Удалить</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            {% else %}
+                <div style="display: block">
+                    <div>
+                        <p>У вас пока что нет рент</p>
+                    </div>
+                    <div>
+                        <a href="#" onclick="showContent('addRent')">
+                            Добавить ренту
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="getExpenses" class="content mt-3">
+        <h1>Ваши расходы:</h1>
+        <div class="d-flex flex-wrap">
+            {% for expense in expenses %}
+                <div class="flex-item col-md-4">
+                    <div class="card" style="margin: 10px">
+                        <div class="card-body">
+                            <p class="card-title">{{ expense.name }}</p>
+                            <p class="card-text">Значение: {{ expense.value }}</p>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal2">
+                                Подробнее
+                            </button>
+
+                            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{ expense.name }}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="card-text">Описание: {{ expense.description }}</p>
+                                            <p class="card-text">Значение: {{ expense.value }}</p>
+                                            <p class="card-text">Дата: {{ expense.get_date() }}</p>
+                                            <p class="card-text">Тип: {{ expense.expense_type }}</p>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form method="POST"
+                                                  action="{{ url_for('service.delete_expense', apartment_id=apartment.id, expense_id=expense.id) }}">
+                                                <button type="submit" class="btn btn-danger">Удалить</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div>
+                    <div>
+                        <p>У вас пока что нет расходов</p>
+                    </div>
+                    <div>
+                        <a href="#" onclick="showContent('addExpenses')">
+                            Добавить расход
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="addRent" class="content mt-3">
+        <h1>Добавить ренту</h1>
+        <form method="POST" action="{{ url_for('service.create_rent', apartment_id=apartment.id) }}">
+            <div class="mb-3">
+                <label for="exampleStart" class="form-label">Начало сдачи</label>
+                <input type="date" class="form-control" id="exampleStart"
+                       name="date_start">
             </div>
-        {% else %}
-            У вас пока что нет рент
-        {% endfor %}
+            <div class="mb-3">
+                <label for="exampleEnd" class="form-label">Конец сдачи</label>
+                <input type="date" class="form-control" id="exampleEnd"
+                       name="date_end">
+            </div>
+            <div class="mb-3">
+                <label for="examplePrice" class="form-label">Стоимость суток</label>
+                <input type="number" class="form-control" id="examplePrice"
+                       name="price">
+            </div>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>
+    <div id="addExpenses" class="content mt-3">
+        <h1>Добавить расход</h1>
+        <form method="POST" action="{{ url_for('service.create_expense', apartment_id=apartment.id) }}">
+            <div class="mb-3">
+                <label for="exampleName" class="form-label">Название</label>
+                <input type="text" class="form-control" id="exampleName"
+                       name="name">
+            </div>
+            <div class="mb-3">
+                <label for="exampleDescription" class="form-label">Описание</label>
+                <input type="text" class="form-control" id="exampleDescription"
+                       name="description">
+            </div>
+            <div class="mb-3">
+                <label for="exampleValue" class="form-label">Значение</label>
+                <input type="number" class="form-control" id="exampleValue"
+                       name="value">
+            </div>
+            <div class="mb-3">
+                <label for="exampleDate" class="form-label">Дата</label>
+                <input type="date" class="form-control" id="exampleDate"
+                       name="date">
+            </div>
+            <div class="mb-3">
+                <label for="typeSelect">Выберите опцию:</label>
+                <select class="form-control" id="typeSelect" name="expense_type">
+                    <option>Ремонт</option>
+                    <option>Бытовые</option>
+                    <option>Налоги</option>
+                    <option>Коммуналка</option>
+                    <option>Остальные</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
     </div>
 
-    <h1>Добавить ренту</h1>
-    <form method="POST" action="{{ url_for('service.create_rent', apartment_id=apartment.id) }}">
-        <div class="mb-3">
-            <label for="exampleStart" class="form-label">Начало сдачи</label>
-            <input type="date" class="form-control" id="exampleStart"
-                   name="date_start">
-        </div>
-        <div class="mb-3">
-            <label for="exampleEnd" class="form-label">Конец сдачи</label>
-            <input type="date" class="form-control" id="exampleEnd"
-                   name="date_end">
-        </div>
-        <div class="mb-3">
-            <label for="examplePrice" class="form-label">Стоимость суток</label>
-            <input type="number" class="form-control" id="examplePrice"
-                   name="price">
-        </div>
-        <div class="mb-3">
-            <label for="examplePrice" class="form-label">Расходы на сдачу</label>
-            <input type="number" class="form-control" id="examplePrice"
-                   name="expenses">
-        </div>
-        <div class="mb-3">
-            <label for="examplePrice" class="form-label">Налог</label>
-            <input type="number" class="form-control" id="examplePrice"
-                   name="tax">
-        </div>
-        <button type="submit" class="btn btn-primary">Добавить</button>
-    </form>
 {% endblock %}
